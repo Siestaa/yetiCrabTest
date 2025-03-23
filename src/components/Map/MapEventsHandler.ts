@@ -25,6 +25,7 @@ export const MapEventsHandler = ({
                     setLocation(reversedLocationName);
                 })
                 .catch((error) => {
+                    // eslint-disable-next-line no-console
                     console.error('Ошибка геокодирования:', error);
                 });
         },

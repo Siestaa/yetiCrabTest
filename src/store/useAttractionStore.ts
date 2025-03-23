@@ -25,7 +25,6 @@ export const useAttractionStore = create<AttractionStore>((set) => ({
     addAttraction: async (attraction) => {
         const response = await fetch('/api/attractions', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(attraction),
         });
         const newAttraction = await response.json();
@@ -34,7 +33,6 @@ export const useAttractionStore = create<AttractionStore>((set) => ({
     updateAttraction: async (id, attraction) => {
         const response = await fetch(`/api/attractions/${id}`, {
             method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(attraction),
         });
         const updatedAttraction = await response.json();
@@ -49,7 +47,6 @@ export const useAttractionStore = create<AttractionStore>((set) => ({
     updateStatus: async (id, status) => {
         const response = await fetch(`/api/attractions/${id}`, {
             method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({status}),
         });
         const updatedAttraction = await response.json();

@@ -1,5 +1,6 @@
 import {EditAttractionForm} from '@/components/EditAttractionForm/EditAttractionForm';
 
-export default function EditAttractionPage({params}: {params: {id: string}}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default function EditAttractionPage({params}: {params: any}) {
     return <EditAttractionForm id={params.id} />;
 }

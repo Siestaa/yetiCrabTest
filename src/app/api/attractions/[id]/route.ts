@@ -2,18 +2,12 @@ import {Attraction} from '@/types/attraction';
 import {NextRequest, NextResponse} from 'next/server';
 import {attractionsData} from '../attractionsList';
 
-export async function PATCH(req: NextRequest, {params}: {params: {id: string}}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function PATCH(req: NextRequest, {params}: {params: any}) {
     const id = params.id;
-
-    if (!id) {
-        return NextResponse.json({message: 'ID is required'}, {status: 400});
-    }
 
     try {
         const {status} = await req.json();
-        if (status !== 'planned' && status !== 'visited') {
-            return NextResponse.json({message: 'Invalid status'}, {status: 400});
-        }
 
         const index = attractionsData.findIndex((a) => a.id === id);
         if (index === -1) {
@@ -27,19 +21,13 @@ export async function PATCH(req: NextRequest, {params}: {params: {id: string}}) 
     }
 }
 
-export async function PUT(req: NextRequest, {params}: {params: {id: string}}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function PUT(req: NextRequest, {params}: {params: any}) {
     const id = params.id;
-
-    if (!id) {
-        return NextResponse.json({message: 'ID is required'}, {status: 400});
-    }
 
     try {
         const body: Omit<Attraction, 'id' | 'createdAt'> = await req.json();
         const index = attractionsData.findIndex((a) => a.id === id);
-        if (index === -1) {
-            return NextResponse.json({message: 'Attraction not found'}, {status: 404});
-        }
 
         const updatedAttraction: Attraction = {
             ...body,
@@ -53,18 +41,12 @@ export async function PUT(req: NextRequest, {params}: {params: {id: string}}) {
     }
 }
 
-export async function DELETE(req: NextRequest, {params}: {params: {id: string}}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function DELETE(_req: NextRequest, {params}: {params: any}) {
     const id = params.id;
-
-    if (!id) {
-        return NextResponse.json({message: 'ID is required'}, {status: 400});
-    }
 
     try {
         const index = attractionsData.findIndex((a) => a.id === id);
-        if (index === -1) {
-            return NextResponse.json({message: 'Attraction not found'}, {status: 404});
-        }
 
         attractionsData.splice(index, 1);
         return NextResponse.json({message: 'Attraction deleted'}, {status: 200});

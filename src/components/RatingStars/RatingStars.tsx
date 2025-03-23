@@ -4,10 +4,9 @@ import styles from './RatingStars.module.css';
 
 interface RatingStarsProps {
     value: number;
-    size?: 's' | 'm' | 'l';
 }
 
-export const RatingStars: React.FC<RatingStarsProps> = ({value, size = 'm'}) => {
+export const RatingStars: React.FC<RatingStarsProps> = ({value}) => {
     const maxRating = 5;
     return (
         <div className={styles.ratingStars}>
@@ -15,7 +14,7 @@ export const RatingStars: React.FC<RatingStarsProps> = ({value, size = 'm'}) => 
                 <Icon
                     key={index}
                     data={StarFill}
-                    size={size === 's' ? 16 : size === 'm' ? 20 : 24}
+                    size={'m'}
                     className={index < value ? styles.filledStar : styles.emptyStar}
                 />
             ))}
