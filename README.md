@@ -1,45 +1,160 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Запустить локально - склонируйте и введите в консоле np, run dev
+Деплой: https://yeti-crab-test.vercel.app/
 
-## Getting Started
+Требования к документации:
 
-First, get the example app and install dependencies:
+1. Получение списка достопримечательностей
+   GET /api/attractions
 
-```bash
-npx create-next-app@latest my-app --example "https://github.com/gravity-ui/gravity-ui-example-nextjs"
-```
+Возвращает список всех достопримечательностей или одну достопримечательность по её ID.
+ALL: endpoint - GET /api/attractions
+response status 200: [
+{
+"id": "1",
+"title": "Эйфелева башня",
+"description": "Знаменитая железная башня в центре Парижа",
+"createdAt": "2025-03-22T10:30:00Z",
+"rating": 5,
+"photoUrl": "/eiffel-tower.jpg",
+"location": "Париж, Франция",
+"coordinates": { "latitude": 48.8584, "longitude": 2.2945 },
+"status": "planned"
+},
+...
+]
 
-After then, run the development server:
+one item: endpoint GET /api/attractions?id=1
+response status 200: {
+"id": "1",
+"title": "Эйфелева башня",
+"description": "Знаменитая железная башня в центре Парижа",
+"createdAt": "2025-03-22T10:30:00Z",
+"rating": 5,
+"photoUrl": "/eiffel-tower.jpg",
+"location": "Париж, Франция",
+"coordinates": { "latitude": 48.8584, "longitude": 2.2945 },
+"status": "planned"
+}
 
-```bash
-cd my-app
+response status 404: {
+"message": "Attraction not found"
+}
 
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Создание новой достопримечательности
+   POST /api/attractions
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Добавляет новую достопримечательность в список.
+Payload: {
+{
+"title": string,
+"description": string,
+"rating": number,
+"photoUrl": string,
+"location": string,
+"coordinates": {
+"latitude": number,
+"longitude": number
+},
+"status": string
+}
+}
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+response status 201 {
+{
+"id": "uuid-generated",
+"title": "Новая достопримечательность",
+"description": "Описание новой достопримечательности",
+"createdAt": "2025-03-23T12:00:00Z",
+"rating": 4,
+"photoUrl": "/new-attraction.jpg",
+"location": "Город, Страна",
+"coordinates": { "latitude": 50.1234, "longitude": 30.5678 },
+"status": "planned"
+}
+}
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+response status 400: {
+"message": "Invalid request body"
+}
 
-## Learn More
+3. Обновление статуса достопримечательности
+   PATCH /api/attractions
 
-To learn more about Next.js, take a look at the following resources:
+Обновляет статус конкретной достопримечательности по её ID.
+Payload: {
+{
+"id": string
+}
+}
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+response status 200 {
+{
+"id": "1",
+"title": "Эйфелева башня",
+"description": "Знаменитая железная башня в центре Парижа",
+"createdAt": "2025-03-22T10:30:00Z",
+"rating": 5,
+"photoUrl": "/eiffel-tower.jpg",
+"location": "Париж, Франция",
+"coordinates": { "latitude": 48.8584, "longitude": 2.2945 },
+"status": "visited"
+}
+}
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+response status 404: {
+"message": "ID is required" | "Invalid status"
+}
 
-## Deploy on Vercel
+4. Полное обновление достопримечательности
+   PUT /api/attractions/{id}
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Обновляет все поля достопримечательности по её ID (кроме id и createdAt).
+Payload: {
+{
+"title": string,
+"description": string,
+"rating": number,
+"photoUrl": string,
+"location": string,
+"coordinates": {
+"latitude": number,
+"longitude": number
+},
+"status": string
+}
+}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# yetiCrabTest
+response status 200 {
+{
+"id": "1",
+"title": "Эйфелева башня",
+"description": "Знаменитая железная башня в центре Парижа",
+"createdAt": "2025-03-22T10:30:00Z",
+"rating": 5,
+"photoUrl": "/eiffel-tower.jpg",
+"location": "Париж, Франция",
+"coordinates": { "latitude": 48.8584, "longitude": 2.2945 },
+"status": "visited"
+}
+}
+
+response status 400: {
+"message": "Invalid request body"
+}
+
+5. Удаление достопримечательности
+   DELETE /api/attractions/{id}
+
+Удаляет достопримечательность по её ID.
+
+response status 200 {
+{
+"message": "Attraction deleted"
+}
+}
+
+response status 500 {
+{
+"message": "Error deleting attraction"
+}
+}
