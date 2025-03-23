@@ -175,7 +175,7 @@ export const CreateAttractionForm = ({attraction}: CreateAttractionFormProps) =>
             <div className={styles.titleContainer}>
                 <ArrowLeft className={styles.back} onClick={handleBack} />
                 <h1>
-                    {isAdmin
+                    {attraction
                         ? 'Редактирование достопримечательность'
                         : 'Создать новую достопримечательность'}
                 </h1>
@@ -274,7 +274,7 @@ export const CreateAttractionForm = ({attraction}: CreateAttractionFormProps) =>
                     )}
 
                     <Button view="action" size="l" type="submit">
-                        {isAdmin ? 'Сохранить' : 'Создать'}
+                        {attraction ? 'Сохранить' : 'Создать'}
                     </Button>
                 </form>
             </Card>
