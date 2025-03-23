@@ -1,0 +1,29 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.filters {
+    display: flex;
+    gap: 12px;
+}
+
+.sortButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.statusFilter {
+    width: 200px;
+}

@@ -1,0 +1,45 @@
+.card {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    max-width: 600px;
+}
+
+.imageContainer {
+    flex-shrink: 0;
+}
+
+.image {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.editCard {
+    cursor: pointer;
+}
+
+.iconsContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}

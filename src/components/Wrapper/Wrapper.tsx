@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import block from 'bem-cn-lite';
-import {Button, Icon, Theme, ThemeProvider} from '@gravity-ui/uikit';
 import {Moon, Sun} from '@gravity-ui/icons';
+import {Button, Icon, Theme, ThemeProvider} from '@gravity-ui/uikit';
+import block from 'bem-cn-lite';
+import React from 'react';
 
 import './Wrapper.scss';
 
@@ -39,12 +39,6 @@ export const Wrapper: React.FC<AppProps> = ({children}) => {
                     </Button>
                 </div>
                 <div className={b('layout')}>
-                    <div className={b('header')}>
-                        <div className={b('logo')}>
-                            <div className={b('gravity-logo', {dark: isDark})} />
-                            <div className={b('next-logo', {dark: isDark})} />
-                        </div>
-                    </div>
                     <div className={b('content')}>{children}</div>
                 </div>
             </div>

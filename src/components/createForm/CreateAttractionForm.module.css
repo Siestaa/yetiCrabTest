@@ -1,0 +1,53 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.formCard {
+    padding: 24px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fileInput {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.preview {
+    max-width: 200px;
+    height: auto;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
+.mapContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.errors {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.back {
+    cursor: pointer;
+}

@@ -1,5 +1,11 @@
-import {InfoButtons} from '../components/InfoButtons';
+'use client';
 
-export default function Home() {
-    return <InfoButtons />;
+import {AttractionList} from '@/components/AttractionList/AttractionList';
+
+export default function AttractionsPage() {
+    return (
+        <div>
+            <AttractionList />
+        </div>
+    );
 }

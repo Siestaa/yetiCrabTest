@@ -7,19 +7,27 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx .",
-    "lint:styles": "stylelint '{styles,src}/**/*.scss'",
-    "lint:prettier": "prettier --check '**/*.md'",
-    "lint": "npm run lint:js && npm run lint:styles && npm run lint:prettier"
+    "lint": "npm run lint:js && npm run lint:styles && npm run lint:prettier",
+    "lint:fix": "npm run lint:js:fix && npm run lint:styles:fix && npm run lint:prettier:fix",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint . --fix",
+    "lint:styles": "stylelint '**/*.css'",
+    "lint:styles:fix": "stylelint '**/*.css' --fix",
+    "lint:prettier": "prettier --check .",
+    "lint:prettier:fix": "prettier --write ."
   },
   "dependencies": {
     "@gravity-ui/icons": "^2.13.0",
     "@gravity-ui/navigation": "^3.1.1",
     "@gravity-ui/uikit": "^7.4.0",
+    "@types/leaflet": "^1.9.16",
     "bem-cn-lite": "^4.1.0",
+    "leaflet": "^1.9.4",
     "next": "^15.0.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^5.0.0",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@gravity-ui/browserslist-config": "^4.3.0",
